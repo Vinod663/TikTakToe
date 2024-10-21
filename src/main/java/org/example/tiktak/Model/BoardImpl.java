@@ -30,7 +30,7 @@ public class BoardImpl implements Board {
 
     @Override
     public Piece checkWinner() {
-        // Check rows, columns, and diagonals for a winner
+
         for (int i = 0; i < 3; i++) {
             if (pieces[i][0] != Piece.EMPTY && pieces[i][0] == pieces[i][1] && pieces[i][1] == pieces[i][2]) {
                 return pieces[i][0];
@@ -46,11 +46,11 @@ public class BoardImpl implements Board {
             return pieces[0][2];
         }
 
-        // Check for a draw (no more moves left)
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (pieces[i][j] == Piece.EMPTY) {
-                    return null;  // Still moves left, no winner yet
+                    return null;
                 }
             }
         }
@@ -67,7 +67,7 @@ public class BoardImpl implements Board {
                 }
             }
         }
-        return moveCount;  // Returns the number of non-empty cells (i.e., the number of moves made)
+        return moveCount;
     }
 
     @Override

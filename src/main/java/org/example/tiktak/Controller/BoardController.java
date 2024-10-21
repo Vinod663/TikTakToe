@@ -82,23 +82,23 @@ public class BoardController implements Initializable {
             Piece winner = board.checkWinner();//X,O,null,Empty
             if (winner != null) {//handle  win and draw
                 if (winner == Piece.EMPTY) {
-                    endGame("It's a Draw!");  // Handle draw case
+                    endGame("It's a Draw!");  // Handle draw
                 } else {
-                    endGame(winner == Piece.X ? playerNameField.getText() + " wins!" : "AI wins!");//Handle the winner
+                    endGame(winner == Piece.X ? playerNameField.getText() + " wins!" : "You Lose!");//Handle the winner//AI wins!
                 }
                 return;
             }
             ///////////////////////////////////////////////////
-            // If no winner yet, AI makes its move
+            // If no winner call Ai
             ai.makeMove();
             updateUI();
 
             winner = board.checkWinner();
             if (winner != null) {
                 if (winner == Piece.EMPTY) {
-                    endGame("It's a Draw!");  // Handle draw case
+                    endGame("It's a Draw!");  // Handle draw
                 } else {
-                    endGame(winner == Piece.X ? playerNameField.getText() + " wins!" : "AI wins!");
+                    endGame(winner == Piece.X ? playerNameField.getText() + " wins!" : "You Lose!");
                 }
             }
         }
@@ -106,8 +106,8 @@ public class BoardController implements Initializable {
 
 
     private void endGame(String message) {////////////////////////
-        gameOver = true;  // Prevent further moves
-        // Display dialog box for game over (win, loss, or draw)
+        gameOver = true;
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Game Over");
         alert.setHeaderText(message);
@@ -120,7 +120,7 @@ public class BoardController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == playAgain) {
-            resetGame();  // Start a new game
+            resetGame();  // Start  new game
         } else {
             System.exit(0);  // Exit the game
         }

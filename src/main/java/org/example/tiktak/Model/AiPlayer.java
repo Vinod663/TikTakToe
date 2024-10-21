@@ -20,15 +20,15 @@ public class AiPlayer extends Player {
                 makeMediumMove();
                 break;
             case "Hard":
-                makeBestMove();  // Full Minimax for hard mode
+                makeBestMove();
                 break;
             default:
-                makeBestMove();  // Default to hard mode
+                makeBestMove();
         }
     }
 
     private void makeRandomMove() {
-        // AI makes a random legal move
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board.isLegalMove(i, j)) {
@@ -40,7 +40,7 @@ public class AiPlayer extends Player {
     }
 
     private void makeMediumMove() {
-        // AI uses a mix of random and Minimax moves with depth limit
+
         if (Math.random() > 0.7) {
             makeRandomMove();  // 30% chance to make a random move
         } else {

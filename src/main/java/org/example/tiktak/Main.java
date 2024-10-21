@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,16 +13,15 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/BoardUi.fxml"));
         primaryStage.setTitle("Tic-Tac-Toe Game");
+        Image image=new Image(getClass().getResourceAsStream("/images/icons8-tic-tac-toe-100.png"));
+        primaryStage.getIcons().add(image);
 
-        primaryStage.setScene(new Scene(root));  // Customize window size
-        // Disable the ability to resize the window
+        primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
-        // Disable full-screen mode explicitly
         primaryStage.setFullScreen(false);
 
-        // Optionally, prevent the user from toggling full-screen
-        primaryStage.setFullScreenExitHint("");  // Disable the default exit hint
-        primaryStage.setFullScreenExitKeyCombination(null); // Disable key combo to toggle full-screen
+        primaryStage.setFullScreenExitHint("");
+        primaryStage.setFullScreenExitKeyCombination(null);
 
         primaryStage.show();
     }

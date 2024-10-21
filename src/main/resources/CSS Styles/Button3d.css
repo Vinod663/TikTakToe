@@ -1,0 +1,33 @@
+.button {
+    -fx-background-color: linear-gradient(#e6e6e6, #a6a6a6),    /* Gradient for a 3D depth effect */
+    linear-gradient(#ffffff, #dcdcdc),
+    linear-gradient(#b8b8b8, #f0f0f0);
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 36px;
+    -fx-padding: 10 20 10 20;
+
+    /* Shadow to create a lifted 3D effect */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 10, 0.5, 2, 2);
+
+    /* Adding a white border to enhance the 3D appearance */
+    -fx-border-color: white;
+    -fx-border-width: 3;
+    -fx-border-radius: 0;    /* Ensuring sharp edges */
+    -fx-background-radius: 0; /* Sharp edges for the button */
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#dcdcdc, #e6e6e6),    /* Invert gradient on hover */
+    linear-gradient(#f0f0f0, #b8b8b8),
+    linear-gradient(#dcdcdc, #ffffff);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 12, 0.5, 2, 2); /* Slightly larger shadow */
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#a6a6a6, #e6e6e6),    /* Make the gradient darker on press */
+    linear-gradient(#dcdcdc, #ffffff),
+    linear-gradient(#e6e6e6, #b8b8b8);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0.7, 1, 1); /* Reduced shadow for pressed effect */
+}
