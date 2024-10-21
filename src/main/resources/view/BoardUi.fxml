@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.tiktak.Controller.BoardController">
+    <TextField fx:id="playerNameField" focusTraversable="false" layoutX="10" layoutY="10" onAction="#ResetOnAction" promptText="Enter Player Name" />
+    <ComboBox fx:id="gameModeComboBox" layoutX="200" layoutY="10" onAction="#ChangeMode" promptText="Select Game Mode" />
+    <Button fx:id="btn00" layoutX="12.0" layoutY="50.0" onAction="#handleButtonClick00" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn01" layoutX="122.0" layoutY="50.0" onAction="#handleButtonClick01" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn02" layoutX="232.0" layoutY="50.0" onAction="#handleButtonClick02" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn10" layoutX="12.0" layoutY="160.0" onAction="#handleButtonClick10" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn11" layoutX="122.0" layoutY="160.0" onAction="#handleButtonClick11" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn12" layoutX="232.0" layoutY="160.0" onAction="#handleButtonClick12" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn20" layoutX="12.0" layoutY="270.0" onAction="#handleButtonClick20" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn21" layoutX="122.0" layoutY="270.0" onAction="#handleButtonClick21" prefHeight="100" prefWidth="100" />
+    <Button fx:id="btn22" layoutX="232.0" layoutY="270.0" onAction="#handleButtonClick22" prefHeight="100" prefWidth="100" />
+</AnchorPane>
