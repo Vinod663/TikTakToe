@@ -13,7 +13,7 @@
 
     /* Adding a white border to enhance the 3D appearance */
     -fx-border-color: white;
-    -fx-border-width: 3;
+    -fx-border-width: 5;
     -fx-border-radius: 0;    /* Ensuring sharp edges */
     -fx-background-radius: 0; /* Sharp edges for the button */
 }

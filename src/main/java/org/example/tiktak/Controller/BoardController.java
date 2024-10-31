@@ -77,8 +77,10 @@ public class BoardController implements Initializable {
     private void handleButtonClick(int row, int col) {
         if (!gameOver && board.isLegalMove(row, col)) {
             human.move(row, col);
+            board.printBoard();
             updateUI();
 
+            //Api(X) play karrdi kawru hari dinalda kiyala check wenawa
             Piece winner = board.checkWinner();//X,O,null,Empty
             if (winner != null) {//handle  win and draw
                 if (winner == Piece.EMPTY) {
@@ -90,9 +92,11 @@ public class BoardController implements Initializable {
             }
             ///////////////////////////////////////////////////
             // If no winner call Ai
-            ai.makeMove();
+            ai.makeMove();//Ai move
+            board.printBoard();
             updateUI();
 
+            //Ai(0) play karrdi kawru hari dinalda kiyala check wenawa
             winner = board.checkWinner();
             if (winner != null) {
                 if (winner == Piece.EMPTY) {
@@ -157,15 +161,30 @@ public class BoardController implements Initializable {
     }
 
     private void updateUI() {///////////////////
-        btn00.setText(board.getPieceAt(0, 0).toString());
-        btn01.setText(board.getPieceAt(0, 1).toString());
-        btn02.setText(board.getPieceAt(0, 2).toString());
-        btn10.setText(board.getPieceAt(1, 0).toString());
-        btn11.setText(board.getPieceAt(1, 1).toString());
-        btn12.setText(board.getPieceAt(1, 2).toString());
-        btn20.setText(board.getPieceAt(2, 0).toString());
-        btn21.setText(board.getPieceAt(2, 1).toString());
-        btn22.setText(board.getPieceAt(2, 2).toString());
+        updateButton(btn00, board.getPieceAt(0, 0));
+        updateButton(btn01, board.getPieceAt(0, 1));
+        updateButton(btn02, board.getPieceAt(0, 2));
+        updateButton(btn10, board.getPieceAt(1, 0));
+        updateButton(btn11, board.getPieceAt(1, 1));
+        updateButton(btn12, board.getPieceAt(1, 2));
+        updateButton(btn20, board.getPieceAt(2, 0));
+        updateButton(btn21, board.getPieceAt(2, 1));
+        updateButton(btn22, board.getPieceAt(2, 2));
+    }
+
+    private void updateButton(Button button, Piece piece) {
+        button.setStyle("-fx-background-color: #1DB954;");
+
+        if (piece == Piece.X) {
+            button.setText("X");
+            button.setStyle(button.getStyle() + "-fx-text-fill: #ffffff;");  // White text for "X"
+        } else if (piece == Piece.O) {
+            button.setText("O");
+            button.setStyle(button.getStyle() + "-fx-text-fill: #333333;");  // Dark gray text for "O"
+        } else {
+            button.setText("");
+           // button.setStyle(button.getStyle() + "-fx-text-fill: transparent;");  // Transparent text for empty cells
+        }
     }
 
     @Override

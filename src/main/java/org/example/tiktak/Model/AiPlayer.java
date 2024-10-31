@@ -2,11 +2,13 @@ package org.example.tiktak.Model;
 
 import org.example.tiktak.Piece;
 
+import java.util.Random;
+
 public class AiPlayer extends Player {
     private String difficulty;
 
     public AiPlayer(BoardImpl board, String difficulty) {
-        super(board);
+        super(board);//Ai player ge super cls eka wena playerge constructor ekata pass karanawa
         this.difficulty = difficulty;
     }
 
@@ -22,26 +24,35 @@ public class AiPlayer extends Player {
             case "Hard":
                 makeBestMove();
                 break;
-            default:
-                makeBestMove();
+//            default://default ekk awashya wen an Easy,Medium,hard 3n ekk dificulty ekata hamawelenma update wenawaaaa
+//                makeBestMove();
         }
     }
 
     private void makeRandomMove() {
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board.isLegalMove(i, j)) {
-                    board.updateMove(i, j, Piece.O);
-                    return;
-                }
-            }
-        }
+//        for (int i = 0; i < 3; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                if (board.isLegalMove(i, j)) {
+//                    board.updateMove(i, j, Piece.O);
+//                    return;
+//                }
+//            }
+//        }
+        int i, j;
+        Random random = new Random();
+
+        do {
+            i = random.nextInt(3); // Random row between 0-2
+            j = random.nextInt(3); // Random column between 0-2
+        } while (!board.isLegalMove(i, j)); // Repeat until a legal move is found
+
+        board.updateMove(i, j, Piece.O); // Make the move(update piece enum )
     }
 
     private void makeMediumMove() {
 
-        if (Math.random() > 0.7) {
+        if (Math.random() > 0.7) {//0.7
             makeRandomMove();  // 30% chance to make a random move
         } else {
             makeBestMoveLimitedDepth();  // Use Minimax but limit depth
@@ -98,6 +109,7 @@ public class AiPlayer extends Player {
         board.updateMove(bestMove[0], bestMove[1], Piece.O);  // Make the best move
     }
 
+    //minimax for hard mode
     private int minimax(BoardImpl board, int depth, boolean isMaximizing, int alpha, int beta) {
         Piece winner = board.checkWinner();
         if (winner != null) {
