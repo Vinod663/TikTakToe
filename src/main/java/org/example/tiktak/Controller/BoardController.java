@@ -5,17 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import org.example.tiktak.Model.AiPlayer;
-import org.example.tiktak.Model.BoardImpl;
-import org.example.tiktak.Model.HumanPlayer;
-import org.example.tiktak.Model.Player;
+import org.example.tiktak.Model.*;
 import org.example.tiktak.Piece;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class BoardController implements Initializable {
+public class BoardController implements Initializable,BoardUi {
 
     @FXML
     private Button btn00;
@@ -55,6 +52,7 @@ public class BoardController implements Initializable {
     private AiPlayer ai;
     private boolean gameOver = false;
 
+
     @FXML
     public void handleButtonClick00() { handleButtonClick(0, 0); }
     @FXML
@@ -78,6 +76,7 @@ public class BoardController implements Initializable {
         if (!gameOver && board.isLegalMove(row, col)) {
             human.move(row, col);
             board.printBoard();
+
             updateUI();
 
             //Api(X) play karrdi kawru hari dinalda kiyala check wenawa
@@ -159,8 +158,8 @@ public class BoardController implements Initializable {
         }
 //        updateUI();
     }
-
-    private void updateUI() {///////////////////
+    @Override
+    public void updateUI() {///////////////////
         updateButton(btn00, board.getPieceAt(0, 0));
         updateButton(btn01, board.getPieceAt(0, 1));
         updateButton(btn02, board.getPieceAt(0, 2));
@@ -171,8 +170,8 @@ public class BoardController implements Initializable {
         updateButton(btn21, board.getPieceAt(2, 1));
         updateButton(btn22, board.getPieceAt(2, 2));
     }
-
-    private void updateButton(Button button, Piece piece) {
+@Override
+public void updateButton(Button button, Piece piece) {
         button.setStyle("-fx-background-color: #1DB954;");
 
         if (piece == Piece.X) {
